@@ -5,7 +5,7 @@ import getCountries from "./action/CountriesActions";
 interface IState {
   country: any;
   border: any;
-  sajjad: any;
+  sajjad: number;
   
 }
 
@@ -20,7 +20,7 @@ class App extends Component<IProps, IState> {
     super(props);
     this.state = {
       country: "Select Countries",
-      border: 0,
+      border: "",
       sajjad: 0,
     };
   }
@@ -39,13 +39,13 @@ class App extends Component<IProps, IState> {
        {
          countries.map((elem:any,index:any)=>(
            <>
-              {/* <h4>{elem.borders[0]}</h4> */}
+              {/* <h4>{elem.population}</h4> */}
            </>
          ))
        }
 
        </h2>
-       <h3>This is ...{this.state.country}......country........{this.state.border}</h3>
+       <h3>This is ...{this.state.country}......country.....borders...{this.state.border}...</h3>
        <select value={this.state.country} onChange={(e:any)=>{this.setState({country:e.target.value})}} >
             {
               countries.map((elem:any,index:any)=>(
@@ -56,6 +56,7 @@ class App extends Component<IProps, IState> {
               ))
             }
        </select>
+       <h3>Borders of {this.state.country}</h3>
        <select value={this.state.border} onChange={(e:any)=>{this.setState({border:e.target.value})}}>
               {
                 countries.map((elem:any, index:any)=>(
@@ -76,6 +77,25 @@ class App extends Component<IProps, IState> {
                 ))
               }
        </select>
+       <h3>Population</h3>
+
+         <h4>
+         {
+              countries.map((elem:any,index:any)=>(
+                <>
+                {
+                  elem.name === this.state.country?(
+                    <>
+                       {elem.population}
+                      </>
+                  ):null
+                }
+                   
+                </>
+              ))
+            }
+           </h4> 
+       
      </> 
     )
   }
