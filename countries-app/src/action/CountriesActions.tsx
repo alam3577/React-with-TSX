@@ -25,7 +25,7 @@ const getCountries = () => {
         countries: data,
         error: "",
       });
-    } catch (err) {
+    } catch (err:any) {
       dispatch({
         type: COUNTRIES_LOADING_FAIL,
         loading: true,
